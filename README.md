@@ -11,7 +11,7 @@ https://docs.ktc.se/media/duc-manualer/Anvandarmanual%20del%202,%20KTC-RCU1111,%
 
 ## How to run
 1. Modify ```ktc_settings.env``` with your KTC settings (IP adress and login password).
-2. Configure the volume  _database-data_ used for persisting the postgres database, to suit your needs.
+2. Modify ```docker-compose.yaml``` to configure the volume  _database-data_ used for persisting the postgres database, to suit your needs.
 3. Compile and start:
 ```
 ./gradlew && docker-compose up --build -d
