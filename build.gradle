@@ -1,0 +1,16 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+defaultTasks 'build', 'test', 'jar', 'war'
+
+subprojects {
+    version = '1.0'
+}
+apply plugin: 'idea'
+apply plugin: 'java'
+
+
+
+

@@ -1,0 +1,33 @@
+version: '2'
+services:
+  measurement-reader:
+    restart: always
+    build: ./reader
+    links:
+      - database
+    env_file:
+      - ktc_settings.env
+  frontend:
+    restart: always
+    image: jetty:11-jre11-slim
+    ports:
+      - "8079:8080"
+    volumes:
+      - ./frontend/build/libs/frontend-1.0.war:/var/lib/jetty/webapps/root.war
+  database:
+    restart: always
+    image: "postgres:12"
+    hostname: database
+    env_file:
+      - database.env
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+volumes:
+  database-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /opt/data/elva-postgres
